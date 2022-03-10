@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Profile from "../views/Profile.vue";
-import NotFound from "../views/NotFound.vue";
-import Info from "../views/Info.vue";
+import About from "../views/About.vue";
+
 const routes = [
   {
     path: "/",
@@ -11,46 +10,24 @@ const routes = [
   },
 
   {
-    path: "/profile",
-    name: "ProfileMain",
-    component: Profile,
-  },
-
-  {
-    path: "/profile/:id",
-    name: "Profile",
-    component: Profile,
-    children: [
-      ///  profile/123/info
-      {
-        path:'info',
-        name: 'Info',
-        component: Info
-      }
-    ]
-  },
-
-
-
-  {
     path: "/about",
     name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    component: About,
   },
 
-  {
-    // path: "*",
-    path: "/:catchAll(.*)",
-    name: "NotFound",
-    component: NotFound,
-    meta: {
-      requiresAuth: false
-    }
-  }
+
+
+//lazy loading modules,
+
+  // {
+  //   path: "/about",
+  //   name: "About",
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  // },
 ];
 
 const router = createRouter({
